@@ -1,11 +1,9 @@
 # MovieRecommender
 Movie Recommender using TMDB API and Angular 2.0
 
-Great follow-up. To meet your goal of learning **Angular at a beginner-to-mid level**, including **NgRx**, let's align your **Movie Recommender App** to use the key Angular features you mentioned earlier.
+To meet my goal of learning **Angular at a beginner-to-mid level**, including **NgRx**, let's align your **Movie Recommender App** to use the key Angular features below:
 
----
-
-## ✅ Your Requirements Recap
+## ✅ Requirements Recap
 
 | Feature                   | Included? | Notes                                                             |
 | ------------------------- | --------- | ----------------------------------------------------------------- |
@@ -161,12 +159,3 @@ getRecommendations(answers: AnswersState): Movie[] {
 | Template Binding  | Dashboard and result display              |
 | Optional CSS Anim | Loading states, transitions               |
 
----
-
-Would you like me to generate:
-
-* A full base Angular project with this structure?
-* One NgRx slice (answers or recommendations)?
-* A starter layout for all routes/components?
-
-Let me know how hands-on you'd like the code generation to be!

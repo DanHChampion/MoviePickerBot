@@ -1,8 +1,6 @@
 # MovieRecommender
 Movie Recommender using TMDB API and Angular 2.0
 
-To meet my goal of learning **Angular at a beginner-to-mid level**, including **NgRx**, let's align your **Movie Recommender App** to use the key Angular features below:
-
 ## ✅ Requirements Recap
 
 | Feature                   | Included? | Notes                                                             |

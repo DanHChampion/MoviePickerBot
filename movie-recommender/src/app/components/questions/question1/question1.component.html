@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()" #questionForm="ngForm">
+  <label class="question" for="genres">Which movie genres do you enjoy the most?</label>
+  <br/>
+  <app-form
+    [options]="options"
+    [multiple]="true"
+    [(selected)]="selectedGenres"
+  />
+  <br/>
+  <app-button label="Next >" type="submit" [disabled]="selectedGenres.length === 0"></app-button>
+</form>

@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()">
+  <label class="question" for="releasedyear">How old would you like the movie to be?</label>
+  <br/>
+  <app-form
+    [options]="options"
+    [multiple]="false"
+    [(selected)]="selectedReleasedYear"
+  />
+  <br/>
+  <app-button label="Next >" type="submit" [disabled]="!selectedReleasedYear"></app-button>
+</form>

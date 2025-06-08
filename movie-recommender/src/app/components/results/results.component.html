@@ -1,0 +1,23 @@
+<h2>Your Movie Recommendation</h2>
+
+<div *ngIf="answers$ | async as answers; else noData">
+    <h3>Your Answers:</h3>
+    <ul>
+    <li *ngFor="let q of answerKeys">
+        {{ q }}: {{ answers[q] }}
+    </li>
+    </ul>
+
+    <p>Recommended movie based on your answers:</p>
+    <p><strong>{{ recommendedMovie }}</strong></p>
+
+</div>
+<div class="buttons-group">
+    <app-button label="Generate Another"></app-button>
+    <app-button label="Finish" (click)="finish()"></app-button>
+</div>
+
+<ng-template #noData>
+    <p>No previous session data found.</p>
+    <button (click)="finish()">Back to Home</button>
+</ng-template>

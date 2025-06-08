@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()">
+  <label class="question" for="popular">Would you like to watch a more popular movie or a hidden gem?</label>
+  <br/>
+  <app-form
+    [options]="options"
+    [multiple]="false"
+    [(selected)]="selectedPopularity"
+  />
+  <br/>
+  <app-button label="Next >" type="submit" [disabled]="!selectedPopularity"></app-button>
+</form>

@@ -1,0 +1,61 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    color: white;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+
+    .brand {
+        font-weight: bold;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+    }
+
+    .links {
+        display: flex;
+        gap: 1rem;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+
+            &.active {
+                background: #333;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background: #222;
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        &.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 1rem;
+            background: #111;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+    }
+}

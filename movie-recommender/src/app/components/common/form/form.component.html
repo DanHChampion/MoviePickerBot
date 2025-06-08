@@ -1,0 +1,13 @@
+<div [ngClass]="formGroupClass">
+  <label *ngFor="let option of options">
+    <input
+      [type]="multiple ? 'checkbox' : 'radio'"
+      [checked]="isChecked(option)"
+      (change)="toggleOption(option)"
+      [name]="multiple ? option : 'form-group'"
+    />
+    <div class="form-label">
+      {{ option }}
+    </div>
+  </label>
+</div>

@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()" #questionForm="ngForm">
+  <label class="question" for="length">What is your preferred movie length?</label>
+  <br/>
+  <app-form
+    [options]="options"
+    [multiple]="false"
+    [(selected)]="selectedLength"
+  />
+  <br/>
+  <app-button label="Next >" type="submit" [disabled]="!selectedLength"></app-button>
+</form>

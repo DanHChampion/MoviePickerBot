@@ -26,6 +26,6 @@ export class HomeComponent {
   }
 
   startQuestionnaire() {
-    this.router.navigate(['/question1']);
+    this.router.navigate(['/question/0']);
   }
 }

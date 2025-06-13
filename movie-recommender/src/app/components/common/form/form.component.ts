@@ -11,8 +11,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class FormComponent {
   @Input() options: string[] = [];
-  @Input() multiple = false;
-  @Input() selected: string | string[] = this.multiple ? [] : '';
+  @Input() multiple: boolean = false;
+  @Input() selected: string | string[] = '';
 
   @Output() selectedChange = new EventEmitter<string | string[]>();
 

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    padding: 1rem 0;
 }
 
 .multiple {
@@ -42,7 +41,7 @@ input {
 }
 
 input:checked ~ .form-label {
-    background-color: #4CAF50;
+    background-color: #055008;
     color: white;
 
     &::before {

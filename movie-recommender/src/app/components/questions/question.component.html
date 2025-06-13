@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()" #questionForm="ngForm">
+  <h2 class="question">{{question.title}}</h2>
+  <p class="instructions">
+    Select {{ question.type === 'multiple' ? 'one or more options' : 'one option' }}.
+  </p>
+  <app-form
+    [options]="question.options"
+    [multiple]="question.type === 'multiple'"
+    [selected]="question.type === 'multiple' ? selectedOptions : selectedOption"
+    (selectedChange)="onSelectedChange($event)"
+  />
+  <br/>
+  <app-button label="Next >" type="submit" [disabled]="question.type === 'multiple' ? selectedOptions.length === 0 : !selectedOption"></app-button>
+</form>

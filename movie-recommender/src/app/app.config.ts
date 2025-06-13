@@ -7,17 +7,20 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { reducers } from './state/app.reducer';
-import { AppEffects } from './state/app.effects';
+import { reducers } from './store/app/app.reducer';
+import { AppEffects } from './store/app/app.effects';
+import { TmdbEffects } from './store/tmdb/tmdb.effects';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(withFetch()),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
 
     provideStore(reducers),
-    provideEffects([AppEffects]),
+    provideEffects([AppEffects, TmdbEffects]),
     provideStoreDevtools({ maxAge: 25 }),
   ],
 };

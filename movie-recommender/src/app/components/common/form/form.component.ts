@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslationsService } from '../../../services/translations.service';
 
 @Component({
   selector: 'app-form',
@@ -10,6 +11,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './form.component.scss'
 })
 export class FormComponent {
+  constructor(public translationService: TranslationsService) {
+    this.translations = this.translationService.labels;
+  }
+  public translations: any;
+
+  @Input() name: string = '';
   @Input() options: string[] = [];
   @Input() multiple: boolean = false;
   @Input() selected: string | string[] = '';

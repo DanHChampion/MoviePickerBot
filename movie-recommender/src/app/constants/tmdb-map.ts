@@ -1,0 +1,34 @@
+// src/app/constants/tmdb-genre-map.ts
+
+export const GENRE_MAP: Record<string, number> = {
+  action: 28,
+  adventure: 12,
+  animation: 16,
+  comedy: 35,
+  crime: 80,
+  documentary: 99,
+  drama: 18,
+  family: 10751,
+  fantasy: 14,
+  history: 36,
+  horror: 27,
+  music: 10402,
+  mystery: 9648,
+  romance: 10749,
+  scifi: 878,
+  thriller: 53,
+  war: 10752,
+  western: 37
+};
+export const LANGUAGE_MAP: Record<string, string> = {
+  english: 'en',
+  spanish: 'es',
+  french: 'fr',
+  german: 'de',
+  italian: 'it',
+  japanese: 'ja',
+  chinese: 'zh',
+  korean: 'ko',
+  russian: 'ru',
+  portuguese: 'pt'
+};

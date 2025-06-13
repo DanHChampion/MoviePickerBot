@@ -4,7 +4,7 @@
     <h3>Your Answers:</h3>
     <ul>
     <li *ngFor="let q of answerKeys">
-        {{ q }}: {{ answers[q] }}
+        {{ q }}: {{ translations[q][answers[q]] }}
     </li>
     </ul>
 

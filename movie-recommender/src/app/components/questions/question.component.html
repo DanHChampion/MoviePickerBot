@@ -4,6 +4,7 @@
     Select {{ question.type === 'multiple' ? 'one or more options' : 'one option' }}.
   </p>
   <app-form
+    [name]="question.name"
     [options]="question.options"
     [multiple]="question.type === 'multiple'"
     [selected]="question.type === 'multiple' ? selectedOptions : selectedOption"

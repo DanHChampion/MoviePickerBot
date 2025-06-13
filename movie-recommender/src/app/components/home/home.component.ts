@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState } from '../../state/app.reducer';
+import { AppState } from '../../store/app/app.reducer';
 import { ButtonComponent } from '../common/button/button.component';
 
 @Component({

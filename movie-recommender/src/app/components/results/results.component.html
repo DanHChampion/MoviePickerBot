@@ -1,23 +1,46 @@
-<h2>Your Movie Recommendation</h2>
-
-<div *ngIf="answers$ | async as answers; else noData">
-    <h3>Your Answers:</h3>
-    <ul>
-    <li *ngFor="let q of answerKeys">
-        {{ q }}: {{ translations[q][answers[q]] }}
-    </li>
-    </ul>
+<div class="results">
+    <h2>Results:</h2>
+    <div *ngIf="answers$ | async as answers; else noData">
+    <p>Your responses to the questionnaire:</p>
+    <div class="answers">
+        <div class="answer" *ngFor="let q of answerKeys">
+            {{ getTranslatedAnswer(answers, q) }}
+        </div>
+    </div>
 
     <p>Recommended movie based on your answers:</p>
     <p><strong>{{ recommendedMovie }}</strong></p>
+    <div class="movie-details">
+        <div class="movie-card">
+            <div class="poster">
+                <img *ngIf="recommendedMovieDetails.poster_path"
+                     [src]="'https://image.tmdb.org/t/p/w300' + recommendedMovieDetails.poster_path"
+                     [alt]="recommendedMovieDetails.title">
+                <div *ngIf="!recommendedMovieDetails.poster_path" class="no-poster">
+                    No Poster Available
+                </div>
+            </div>
+            <div class="details">
+                <h5 class="title">{{ recommendedMovieDetails.title }} ({{ recommendedMovieDetails.release_date || 2025}})</h5>
+                <p class="overview">{{ recommendedMovieDetails.overview }}</p>
+                <ul class="info-list">
+                    <li><strong>Genre(s):</strong> {{ recommendedMovieDetails.genre_ids.join(', ') }}</li>
+                    <li><strong>Original Language:</strong> {{ recommendedMovieDetails.original_language }}</li>
+                    <li><strong>Popularity:</strong> {{ recommendedMovieDetails.popularity }}</li>
+                    <li><strong>Vote Average:</strong> {{ recommendedMovieDetails.vote_average }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-</div>
-<div class="buttons-group">
-    <app-button label="Generate Another"></app-button>
-    <app-button label="Finish" (click)="finish()"></app-button>
+    <div class="buttons-group">
+        <app-button label="Generate Another"></app-button>
+        <app-button label="Finish" (click)="finish()"></app-button>
+    </div>
 </div>
 
 <ng-template #noData>
     <p>No previous session data found.</p>
     <button (click)="finish()">Back to Home</button>
 </ng-template>
+</div>

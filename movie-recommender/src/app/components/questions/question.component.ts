@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { saveAnswer } from '../../store/app/app.actions';
-import { AppState } from '../../store/app/app.reducer';
+import { saveAnswer } from '../../store/questionnaire/questionnaire.actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

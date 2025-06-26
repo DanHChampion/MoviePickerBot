@@ -1,4 +1,15 @@
 export const LABELS = {
+    general: {
+        welcome: 'Welcome to the Movie Recommender!',
+        start: 'Start Questionnaire',
+        error: 'Error. How the world did you manage to break me? ',
+        finish: 'Finish',
+        back: 'Back',
+        next: 'Next',
+        submit: 'Submit',
+        loading: 'Loading...',
+        another: 'Give me another',
+    },
     genres: {
         action: 'Action',
         adventure: 'Adventure',
@@ -11,7 +22,7 @@ export const LABELS = {
         fantasy: 'Fantasy',
         history: 'History',
         horror: 'Horror',
-        music: 'Musical',
+        music: 'Music',
         mystery: 'Mystery',
         romance: 'Romance',
         scifi: 'Sci-Fi',

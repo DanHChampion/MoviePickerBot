@@ -8,7 +8,7 @@ export const loadMovies = createAction(
 
 export const loadMoviesSuccess = createAction(
   '[TMDB] Load Movies Success',
-  props<{ movies: any[] }>()
+  props<{ movies: any[] | undefined }>()
 );
 
 export const loadMoviesFailure = createAction(

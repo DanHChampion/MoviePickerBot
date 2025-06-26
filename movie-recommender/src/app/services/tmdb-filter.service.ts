@@ -28,14 +28,15 @@ export class TmdbFilterMapperService {
             if (answers.runtime === 'short') {
                 filters.with_runtime_lte = 90;
             } else if (answers.runtime === 'medium') {
-                filters.with_runtime_gte = 90;
+                filters.with_runtime_gte = 89;
                 filters.with_runtime_lte = 120;
             } else if (answers.runtime === 'long') {
-                filters.with_runtime_gte = 120;
+                filters.with_runtime_gte = 119;
             }
         }
 
         if (answers.releaseYear) {
+            // maybe inculde anything before 1 week from the current date
             filters.primary_release_date_gte = answers.releaseYear;
         }
 

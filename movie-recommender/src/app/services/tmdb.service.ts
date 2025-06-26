@@ -4,9 +4,8 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TmdbService {
-  private API_KEY = 'YOUR_TMDB_API_KEY';
-//   private BASE_URL = 'https://api.themoviedb.org/3/discover/movie';
-  private BASE_URL = 'no';
+  private API_KEY = '';
+  private BASE_URL = 'https://api.themoviedb.org/3/discover/movie';
 
 
   constructor(private http: HttpClient) {}

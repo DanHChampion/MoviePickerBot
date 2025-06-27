@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'MoviePickerBot',
+  basePath: '/MoviePickerBot',
   supportedLocales: {
   "en-US": ""
 },

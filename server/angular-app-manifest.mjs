@@ -2,7 +2,7 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
-  baseHref: 'MoviePickerBot',
+  baseHref: '/MoviePickerBot/',
   locale: undefined,
   routes: [
   {
@@ -20,8 +20,8 @@ export default {
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 2319, hash: '15421cb402f693800edbd793b96cc61f1bd821a50d66c4dd30891485cda49173', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1026, hash: '3a7f9b79f58e75a1940859c96400d7ee226be50c0b300bb5e13a5f3c4af5855a', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 2321, hash: 'c101eb57c853c5b248b3a5a5b25e68a8560b87b4d67875bf8e351ed9ff97ec87', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1028, hash: '91deb93b9251304a5102c551a373429ee0346ee5e38729af643bf8f9ac436403', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
     'styles-FHK5K4YV.css': {size: 1757, hash: 'i4+MLq1bYY8', text: () => import('./assets-chunks/styles-FHK5K4YV_css.mjs').then(m => m.default)}
   },
 };

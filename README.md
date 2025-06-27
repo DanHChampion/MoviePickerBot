@@ -1,6 +1,8 @@
 # MoviePickerBot
 A Movie recommender using TMDB API and Angular 2.0
 
+## Live Site: [Here](https://danhchampion.github.io/MoviePickerBot/)
+
 ## ✅ Learning Goals
 
 | Feature                   | Included? | Notes                                                             |

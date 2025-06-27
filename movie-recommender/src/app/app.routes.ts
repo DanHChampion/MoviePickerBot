@@ -5,7 +5,6 @@ import { ResultsComponent } from './components/results/results.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'question/:id', component: QuestionPageComponent },
+  { path: 'question/:id', component: QuestionPageComponent},
   { path: 'results', component: ResultsComponent },
-  // Add other question routes here
 ];

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { QuestionnaireAnswers } from '../../models/questionnaire-answers.model';
+import { QuestionnaireAnswers } from '../../models/questionnaire.model';
 
 export const loadMovies = createAction(
   '[TMDB] Load Movies',

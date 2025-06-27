@@ -9,17 +9,15 @@ export const initialQuestionnaireState: QuestionnaireState = {
   answers: {},
 };
 
-export const reducers = {
-  questionnaire: createReducer(
-    initialQuestionnaireState,
-    on(AppActions.loadAnswers, (state, { answers }) => ({
-      ...state,
-      answers: { ...state.answers, ...answers },
-    })),
-    on(AppActions.saveAnswer, (state, { questionId, answer }) => ({
-      ...state,
-      answers: { ...state.answers, [questionId]: answer },
-    })),
-    on(AppActions.resetQuestionnaire, () => initialQuestionnaireState)
-  )
-};
+export const questionnaireReducer = createReducer(
+  initialQuestionnaireState,
+  on(AppActions.loadAnswers, (state, { answers }) => ({
+    ...state,
+    answers: { ...state.answers, ...answers },
+  })),
+  on(AppActions.saveAnswer, (state, { questionId, answer }) => ({
+    ...state,
+    answers: { ...state.answers, [questionId]: answer },
+  })),
+  on(AppActions.resetQuestionnaire, () => initialQuestionnaireState)
+);

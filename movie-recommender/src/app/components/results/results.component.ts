@@ -8,10 +8,11 @@ import { loadMovies } from '../../store/tmdb/tmdb.actions';
 import { TranslationsService } from '../../services/translations.service';
 import { take } from 'rxjs/operators';
 import { selectAnswers } from '../../store/questionnaire/questionnaire.selectors';
-import { selectMovies } from '../../store/tmdb/tmdb.selectors';
+import { selectMovies, selectMoviesLoading } from '../../store/tmdb/tmdb.selectors';
 import { Observable } from 'rxjs';
-import { QuestionnaireAnswers } from '../../models/questionnaire-answers.model';
-import { map } from 'rxjs/operators';
+import { QuestionnaireAnswers } from '../../models/questionnaire.model';
+import { map, filter } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-results',
@@ -27,6 +28,7 @@ export class ResultsComponent implements OnInit {
   public recommendedMovie = '';
   public recommendedMovieDetails: any = {};
   public translations: any;
+  private shuffledMovies: any[] = [];
 
   constructor(
     private store: Store<AppState>,
@@ -37,6 +39,7 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.answers$ = this.store.select(selectAnswers).pipe(
       map((answers: any) => ({
         genres: answers.genres ?? [],
@@ -73,50 +76,64 @@ export class ResultsComponent implements OnInit {
           popularity: answers['popularity'] || ''
         }
       }));
+    });
 
-      this.movies$ = this.store.select(selectMovies);
-
-      this.movies$.pipe(take(1)).subscribe(movies => {
-        console.log('Movies loaded:', movies);
-        if (!movies || movies.length < 1) {
-          this.recommendedMovie = this.translations.general.error;
-          this.recommendedMovieDetails = {
-            title: "No Movie Found",
-            genre_ids: [],
-            original_language: "en",
-            overview: "No movies match your criteria.",
-            popularity: 0,
-            poster_path: "",
-            release_date: "",
-            vote_average: 0
-          };
+    combineLatest([
+      this.store.select(selectMovies),
+      this.store.select(selectMoviesLoading)
+    ]).pipe(
+      filter(([movies, loading]) => {
+      console.log('Filter check:', { movies, loading });
+      return !loading;
+      }),
+      take(1)
+    ).subscribe(([movies]) => {
+      console.log('Movies loaded:', movies);
+        // Shuffle the movies array
+        if (movies) {
+          this.shuffledMovies = movies.slice().sort(() => Math.random() - 0.5);
+          this.movies$ = new Observable(observer => {
+            observer.next(this.shuffledMovies);
+            observer.complete();
+          });
+          this.recommendedMovie = this.shuffledMovies[0]?.title ?? 'Unknown';
+          this.recommendedMovieDetails = this.shuffledMovies[0] ?? {};
+          console.log('Movie successfully loaded:', this.recommendedMovieDetails);
+          console.log('Movie successfully loaded:', this.recommendedMovieDetails);
+        } else {
+          console.log('No movies found...');
         }
-        else {
-          this.recommendedMovie = movies[0].title ?? 'Unknown Movie';
-          this.recommendedMovieDetails = movies[0] || {
-            title: "Movie Title",
-            genre_ids: [28, 12],
-            original_language: "en",
-            overview: "This is a brief overview of the movie.",
-            popularity: 123.45,
-            poster_path: "/examplePosterPath.jpg",
-            release_date: "2023-01-01",
-            vote_average: 7.8
-          };
-        }
-      });
     });
   }
+  
+  generateAnother = () => {
+    if (!this.shuffledMovies.length) return;
+    this.shuffledMovies.push(this.shuffledMovies.shift()!);
+    this.recommendedMovie = this.shuffledMovies[0]?.title ?? 'Unknown';
+    this.recommendedMovieDetails = this.shuffledMovies[0] ?? {};
+  };
 
   getTranslatedAnswer(answers: any, key: string): string {
     const value = answers[key];
-    if (!value || value.length === 0) {
+    if (!value || value.length === 0 || !value[0]) {
       return key;
     }
     if (Array.isArray(value)) {
       return value.map(val => this.translations[key]?.[val] ?? val).join(', ');
     }
     return this.translations[key]?.[value] ?? value;
+  }
+
+  getYearFromDate(date: string): string {
+    return this.translationsService.getYear(date);
+  }
+
+  getTranslatedDateFromDate(date: string): string {
+    return this.translationsService.getDate(date);
+  }
+
+  getTranslatedGenres(genreIds: string[]): string {
+    return this.translationsService.getGenres(genreIds);
   }
 
   finish() {

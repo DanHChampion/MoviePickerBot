@@ -1,5 +1,3 @@
-// src/app/constants/tmdb-genre-map.ts
-
 export const GENRE_MAP: Record<string, number> = {
   action: 28,
   adventure: 12,
@@ -18,7 +16,8 @@ export const GENRE_MAP: Record<string, number> = {
   scifi: 878,
   thriller: 53,
   war: 10752,
-  western: 37
+  western: 37,
+  tv_movie: 10770,
 };
 export const LANGUAGE_MAP: Record<string, string> = {
   english: 'en',

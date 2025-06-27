@@ -2,12 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
-  width: 50vw;
+  padding-top: 80px;
+  width: 60vw;
   min-width: 300px;
-  max-width: 600px;
+  max-width: 800px;
 
-  @media screen and (max-width: 600px) {
+  h2 {
+    margin: 0 0 1rem 0;
+  }
+
+  @media screen and (max-width: 800px) {
     width: 90vw;
   }
 }
@@ -55,6 +61,7 @@
     background: #222;
     border-radius: 0.5rem;
     overflow: hidden;
+    position: relative;
 
     img {
       width: 100%;
@@ -68,6 +75,53 @@
       font-size: 1rem;
       text-align: center;
       padding: 1rem;
+    }
+
+    .rating {
+      position: absolute;
+      bottom: 0.3rem;
+      right: 0.3rem;
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-self: center;
+      background: none;
+      background-color: #111;
+      border-radius: 50%;
+
+      .circular-chart {
+        max-width: 2.6rem;
+        max-height: 2.6rem;
+        position: relative;
+        display: block;
+        margin: 10px auto;
+
+
+        .circle-bg {
+          stroke: #333;
+          stroke-width: 3.8;
+        }
+
+        .circle {
+          stroke: #4caf50;
+          fill: none;
+          stroke-width: 2.8;
+          stroke-linecap: round;
+          transition: stroke-dasharray 0.4s;
+        }
+
+        .rating-text {
+          position: absolute;
+          fill: #fff;
+          font-size: 0.7em;
+          pointer-events: none;
+          text-anchor: middle;
+          dominant-baseline: middle;
+          font-weight: 600;
+          transform: translateY(-0.1em);
+        }
+      }
     }
   }
 

@@ -28,7 +28,8 @@ export const LABELS = {
         scifi: 'Sci-Fi',
         thriller: 'Thriller',
         war: 'War',
-        western: 'Western'
+        western: 'Western',
+        tv_movie: 'TV Movie',
     },
     company: {
         alone: 'No one, I\'m watching alone',
@@ -53,5 +54,19 @@ export const LABELS = {
         popular: 'Popular movie',
         hidden: 'Hidden gem',
         none: 'No preference'
-    }
+    },
+    month: {
+        '01': 'January',
+        '02': 'February',
+        '03': 'March',
+        '04': 'April',
+        '05': 'May',
+        '06': 'June',
+        '07': 'July',
+        '08': 'August',
+        '09': 'September',
+        '10': 'October',
+        '11': 'November',
+        '12': 'December'
+    },
 };

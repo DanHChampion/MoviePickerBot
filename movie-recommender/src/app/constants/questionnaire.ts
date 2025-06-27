@@ -13,7 +13,7 @@ export const QUESTIONNAIRE: Question[] = [
     id: 0,
     name: 'genres',
     title: 'Which movie genre(s) do you enjoy the most?',
-    options: Object.keys(LABELS.genres),
+    options: Object.keys(LABELS.genres).slice(0, -1),
     type: 'multiple'
 },
 {

@@ -1,40 +1,55 @@
 <div class="results">
-    <h2>Results:</h2>
+    <h2>Results</h2>
     <div *ngIf="answers$ | async as answers; else noData">
-    <p>Your responses to the questionnaire:</p>
     <div class="answers">
         <div class="answer" *ngFor="let q of answerKeys">
             {{ getTranslatedAnswer(answers, q) }}
         </div>
     </div>
 
-    <p>Recommended movie based on your answers:</p>
-    <p><strong>{{ recommendedMovie }}</strong></p>
+    <p>This is my suggestion based on your answers in the questionnaire.</p>
     <div class="movie-details">
         <div class="movie-card">
             <div class="poster">
-                <img *ngIf="recommendedMovieDetails.poster_path"
-                     [src]="'https://image.tmdb.org/t/p/w300' + recommendedMovieDetails.poster_path"
-                     [alt]="recommendedMovieDetails.title">
+                <img *ngIf="recommendedMovieDetails && recommendedMovieDetails.poster_path"
+                     [src]="'https://image.tmdb.org/t/p/original' + recommendedMovieDetails.poster_path"
+                     [alt]="recommendedMovieDetails?.title">
                 <div *ngIf="!recommendedMovieDetails.poster_path" class="no-poster">
                     No Poster Available
                 </div>
+                <div *ngIf="recommendedMovieDetails && recommendedMovieDetails.vote_average" class="rating">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg"
+                            d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path class="circle"
+                            [attr.stroke-dasharray]="(recommendedMovieDetails.vote_average * 10) + ', 100'"
+                            d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="20.35" class="rating-text">
+                            {{ (recommendedMovieDetails.vote_average) * 10 | number:'1.0-0' }}%
+                        </text>
+                    </svg>
+                </div>
             </div>
             <div class="details">
-                <h5 class="title">{{ recommendedMovieDetails.title }} ({{ recommendedMovieDetails.release_date || 2025}})</h5>
+                <h5 class="title">{{ recommendedMovieDetails.title }} ({{ getYearFromDate(recommendedMovieDetails.release_date) || 2025}})</h5>
                 <p class="overview">{{ recommendedMovieDetails.overview }}</p>
                 <ul class="info-list">
-                    <li><strong>Genre(s):</strong> {{ recommendedMovieDetails.genre_ids.join(', ') }}</li>
+                    <li><strong>Release Date:</strong> {{ getTranslatedDateFromDate(recommendedMovieDetails.release_date) }}</li>
+                    <li><strong>Genre(s):</strong> {{ getTranslatedGenres(recommendedMovieDetails.genre_ids) }}</li>
                     <li><strong>Original Language:</strong> {{ recommendedMovieDetails.original_language }}</li>
-                    <li><strong>Popularity:</strong> {{ recommendedMovieDetails.popularity }}</li>
-                    <li><strong>Vote Average:</strong> {{ recommendedMovieDetails.vote_average }}</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="buttons-group">
-        <app-button label="Generate Another"></app-button>
+        <app-button label="Generate Another" (click)="generateAnother()"></app-button>
         <app-button label="Finish" (click)="finish()"></app-button>
     </div>
 </div>

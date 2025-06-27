@@ -7,3 +7,8 @@ export const selectMovies = createSelector(
   selectTmdbState,
   (state: TmdbState) => state?.movies
 );
+
+export const selectMoviesLoading = createSelector(
+  selectTmdbState,
+  (state) => state.loading
+);

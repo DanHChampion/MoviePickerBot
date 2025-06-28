@@ -8,6 +8,7 @@ export interface TMDBFilterParams {
   'certification.gte'?: string; // e.g. 'G', 'PG-13'
   'certification.lte'?: string; // e.g. 'PG-13', 'R'
   include_adult?: boolean; // true or false
+  page?: number; // for pagination
 }
 
 export interface RecommendedMovieDetails {

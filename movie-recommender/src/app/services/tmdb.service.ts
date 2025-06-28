@@ -65,6 +65,8 @@ export class TmdbService {
 
     filters.include_adult = false; // ALWAYS
 
+    filters.page = Math.floor(Math.random() * 200) + 1;
+
     return filters;
   }
 

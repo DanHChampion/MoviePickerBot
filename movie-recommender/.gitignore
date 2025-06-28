@@ -43,4 +43,4 @@ Thumbs.db
 
 # Environment variables
 environment.development.ts
-environment.production.ts
+environment.prod.ts

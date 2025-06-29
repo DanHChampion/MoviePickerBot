@@ -63,9 +63,8 @@ export class TmdbService {
       }
     }
 
-    filters.include_adult = false; // ALWAYS
-
-    filters.page = Math.floor(Math.random() * 200) + 1;
+    filters.include_adult = false;
+    filters.page = Math.floor(Math.random() * 50) + 1;
 
     return filters;
   }

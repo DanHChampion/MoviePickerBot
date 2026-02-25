@@ -65,6 +65,7 @@ export class TmdbService {
 
     filters.include_adult = false;
     filters.page = Math.floor(Math.random() * 50) + 1;
+    filters.with_original_language = 'en';
 
     return filters;
   }

@@ -1,7 +1,7 @@
 <div class="home">
     <h1>Greetings, Human.</h1>
     <p>
-        I am <code>MoviePickerBot(v1.0)</code>. I am programmed to assist you in selecting a motion picture.
+        I am <code>MoviePickerBot(v1.1)</code>. I am programmed to assist you in selecting a motion picture.
         As a robot, I have some clear advantages over those fancy LLMs:
     </p>
     <ul>
@@ -15,17 +15,4 @@
     <div class="buttons-group">
         <app-button label="Start" (click)="startQuestionnaire()"></app-button>
     </div>
-
-    <!-- <div *ngIf="answers$ | async as answers; else noAnswers">
-        <h3>Previous Session Answers:</h3>
-        <ul>
-        <li *ngFor="let q of answerKeys">{{ q }}: {{ answers[q] }}</li>
-        </ul>
-
-        <p>Last recommended movie: <strong>{{ recommendedMovie }}</strong></p>
-    </div>
-
-    <ng-template #noAnswers>
-        <p>No previous session data.</p>
-    </ng-template> -->
 </div>
